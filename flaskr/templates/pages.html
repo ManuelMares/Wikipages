@@ -1,0 +1,183 @@
+{% extends "main.html" %}
+
+
+<!-- 
+    for loop, call var, if condition
+ -->
+
+{% block content %}
+<!--
+     jinja code to determine what page to display depending on whether or not the user has chosen a page
+
+     if page isn't empty, the content is displayed
+
+     otherwise, display the list of content for the user to choose from
+ -->
+<div>
+    {% if page %}
+    <div class="content">
+        <p>{{page}}</p>
+    </div>
+    {% else %}
+    <div class="intro">
+        <h1><b>Pages contained in this Wiki</b></h1>
+    </div>
+
+    <div class="list">
+        <ul>
+            {% for page in listPages %}
+            <li>
+                <a href="{{url_for('current_page', path=page)}}">{{page}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+    {% endif %}
+
+</div>
+
+
+<!-- Form for submitting a new comment -->
+{%if not page %}
+{%elif loggedIn and page %}
+<form method="POST">
+    <textarea name="comment" class="comment-textarea" placeholder="Add a comment..." required></textarea>
+    <br>
+    <input type="submit" class="submit-button" value="Submit">
+</form>
+
+{% elif not loggedIn %}
+<p>Please log in to leave a comment.</p>
+{% endif %}
+
+{% if comments %}
+<div class="comments">
+    <h2>Comments</h2>
+    {% for username, time, comment_text in comments %}
+    <div class="comment">
+        <p><strong>{{ username }}:</strong> {{ comment_text }}</p>
+    </div>
+    <script src="main.html"> </script>
+    {% if loggedIn and userName == username %}
+    <button onclick="deleteComment('{{ page_name }}', '{{ username }}', '{{ time }}')">Delete</button>
+
+    <script>
+        async function deleteComment(path, username, datetimeStr) {
+            const response = await fetch("/delete_comment", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: `page_name=${path}&username=${username}&datetime_str=${datetimeStr}`,
+            });
+
+            if (response.ok) {
+                alert("Comment deleted successfully");
+                // Refresh the comments or reload the page
+            } else {
+                alert("Failed to delete comment");
+            }
+        }
+    </script>
+    {% endif %}
+    </script>
+    {% endfor %}
+
+</div>
+{% endif %}
+
+
+
+{% block css %}
+<style rel="stylesheet" type="text/css">
+    .comment-textarea {
+        width: 40rem;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .submit-button {
+        background-color: #5c78b8;
+        border: none;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .intro {
+        text-align: center;
+        background-color: rgb(153, 153, 231);
+        display: flex;
+        flex-direction: column;
+        border-radius: 2rem;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.35);
+        width: 30rem;
+        margin: 4rem auto;
+    }
+
+    .content {
+        text-align: center;
+        background-color: rgb(176, 176, 231);
+        display: flex;
+        flex-direction: column;
+        border-radius: 2rem;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.35);
+        width: 75%;
+        margin: 4rem auto;
+    }
+
+    .list {
+        text-align: center;
+        background-color: rgb(176, 176, 231);
+        display: flex;
+        flex-direction: column;
+        border-radius: 2rem;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.35);
+        width: 20rem;
+        margin: 4rem auto;
+        padding-right: 35px;
+    }
+
+    .list ul {
+        list-style-type: none;
+    }
+
+    .list li {
+        width: fit-content;
+        margin: auto;
+    }
+
+    .list li:hover {
+        background-color: rgb(153, 153, 231);
+    }
+
+    .list a {
+        font-size: large;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .content p {
+        padding: 20px;
+    }
+
+    form.comment-form {
+        margin: 0 auto;
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+{% endblock css %}
+
+{% block javascript %}
+<script type="text/javascript">
+
+</script>
+{% endblock javascript %}
+
+{% endblock content %}

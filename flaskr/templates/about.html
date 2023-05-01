@@ -1,0 +1,100 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<style>
+
+    .about {
+        display: flex;
+        flex-direction: column;
+        border-radius: 2rem;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.35);
+        width: 85%;
+        margin: 4rem auto;
+    }
+
+    .intro{
+        text-align: center;
+        background-color: rgb(153, 153, 231);
+        padding: 2rem;
+        border-radius: 2rem 2rem 0 0;
+    }
+
+    .intro-text{
+        width: 50%;
+        margin: auto;
+    }
+
+    .owners{
+        writing-mode: horizontal-tb;
+        text-align: center;
+        background-color: rgb(176, 176, 231);
+        padding: 2rem;
+        border-radius: 0 0 2rem 2rem;
+    }
+
+    .bio{
+        display: inline-block;
+        text-align: center;
+        width: 33%;
+    }
+
+    .bio img{
+        margin: 0 auto;
+        width: 360px;
+        height: 360px;
+        object-fit: cover;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 50%;      
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.35);
+        margin-bottom: 10px;
+    }
+
+    .bio h2{
+        margin-bottom: 0;
+    }
+
+    .bio p{
+        font-size: medium;
+        margin: 0;
+    }
+
+</style>
+
+
+<div class="about">
+
+    <div class="intro">
+        <h1>About our Wiki!</h1>
+        <div class="intro-text">
+            <p>Our community is dedicated to preserving the rich history of retro arcade games, and we invite you to join us in this mission. Whether you're a passionate gamer, a historian, or just someone who loves the nostalgia of the arcade scene, you'll find something to enjoy here..</p>
+            <p>In this Wiki you can browse through a vast collection of information about classic arcade games, including their development history, gameplay mechanics, and notable achievements. Our goal is to create a comprehensive database that celebrates the artistry and innovation of these timeless games.</p>
+            <p>If you have any questions or suggestions, please feel free to contact us. We would love to hear from you!</p>
+        </div>            
+    </div>
+    
+    <div class="owners">
+        <h1>Who we are</h1>
+
+        <div class="bio">
+            <img src="https://storage.googleapis.com/author_images/ManuelMares" alt="Manuel Mares' photo">
+            <h2>Manuel Mares</h2>
+            <p> Manuel Mares is a student of the Computer Science degree at New Mexico State University. He is originally from Veracruz, Mexico. He likes music, drawing, and to play soccer.</p> 
+        </div>
+
+        <div class="bio">
+            <img src=https://storage.googleapis.com/author_images/AndroAguilar.png alt="Andro Aguilar's photo">
+            <h2>Andro Aguilar</h2>
+            <p>Andro Aguilar is a sophomore Computer Science and Mathematics major from Florida International University. He currently lives in Miami.</p>
+        </div>
+
+        <div class="bio">
+            <img src="https://storage.googleapis.com/author_images/MatthewGet.JPG" alt="Matthew Getachew's photo">
+            <h2>Matthew Getachew</h2>
+            <p> Matthew is a sophomore Computer Science major at Howard University. He is originally from Addis Ababa Ethiopia, but lives in Colorado.</p>    
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

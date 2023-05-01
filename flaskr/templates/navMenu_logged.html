@@ -1,0 +1,67 @@
+{% block content %} 
+        <div id="navContainer" class="navContainer">
+            <ul id="navMenu" class="navMenu">
+                <li id="navMenu_home" class="navMenu_button" ><a class="navMenu_text" id="navMenu_text">    Home</a></li>
+                <li id="navMenu_About" class="navMenu_button" ><a class="navMenu_text" id="navMenu_text">   About</a></li>
+                <li id="navMenu_Pages" class="navMenu_button" ><a class="navMenu_text" id="navMenu_text">   Pages</a></li>
+                <li id="navMenu_Upload" class="navMenu_button" ><a class="navMenu_text" id="navMenu_text">  Upload</a></li>
+                <li id="navMenu_Wikimusic" class="navMenu_button" ><a class="navMenu_text" id="navMenu_text">  Wikimusic</a></li>
+                <li id="navMenu_Logout" class="navMenu_button" ><a class="navMenu_text" id="navMenu_text">  Logout</a></li>
+                <li id="userName" class="userName" >{{userName}}</li>
+            </ul>   
+        </div>
+
+    {% block css %}
+        <style rel="stylesheet" type="text/css">
+            .navMenu_button:hover{
+                background-color: rgb(153, 153, 231);
+            }
+            .userName{
+                
+                background-color: rgb(69, 69, 150);
+                width: 100%;
+                height: 100%;
+                color: white;
+                font-size: 1.5rem;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .userName:hover{
+                background-color: rgb(91, 91, 151);
+            }    
+            .userName:active{
+                background-color: rgb(113, 113, 152);
+            }         
+        </style>
+    {% endblock css %}
+
+    {% block javascript %}
+        <script type="text/javascript">
+            window.addEventListener('load', function () {            
+                document.getElementById("navMenu_home").onclick = function () {
+                    location.href = "/";
+                };
+                document.getElementById("navMenu_About").onclick = function () {
+                    location.href = "/about";
+                };
+                document.getElementById("navMenu_Pages").onclick = function () {
+                    location.href = "/pages";
+                };
+                document.getElementById("navMenu_Upload").onclick = function () {
+                    location.href = "/upload";
+                };
+                document.getElementById("navMenu_Logout").onclick = function () {
+                    location.href = "/logout";
+                };
+                document.getElementById("userName").onclick = function () {
+                    location.href = "/profile";
+                };
+                document.getElementById("navMenu_Wikimusic").onclick = function () {
+                    location.href = "/wikimusic";
+                };
+            })
+        </script>
+    {% endblock javascript %}
+{% endblock content %}

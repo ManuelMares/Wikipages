@@ -1,0 +1,57 @@
+{% block content %}
+<div id="navContainer" class="navContainer">
+    <ul id="navMenu" class="navMenu">
+        <li id="navMenu_home" class="navMenu_button" ><a class="navMenu_text" id="navMenu_text">    Home</a></li>
+        <li id="navMenu_About" class="navMenu_button" ><a class="navMenu_text" id="navMenu_text">   About</a></li>
+        <li id="navMenu_Pages" class="navMenu_button" ><a class="navMenu_text" id="navMenu_text">   Pages</a></li>
+        <li id="navMenu_Login" class="navMenu_button" ><a class="navMenu_text" id="navMenu_text">   Login</a></li>
+        <li id="navMenu_Wikimusic" class="navMenu_button" ><a class="navMenu_text" id="navMenu_text">  Wikimusic</a></li>
+        <li id="navMenu_Signup" class="navMenu_button" ><a class="navMenu_text" id="navMenu_text">  Signup</a></li>
+    </ul>   
+</div>
+
+{% block css %}
+<style rel="stylesheet" type="text/css">
+    .navMenu_button:hover{
+        background-color: rgb(153, 153, 231);
+    }
+    .navMenu_button:active{
+        background-color: rgb(175, 175, 232);
+    }
+</style>
+{% endblock css %}
+
+
+
+
+{% block javascript %}
+<script type="text/javascript">
+    window.addEventListener('load', function () {            
+        document.getElementById("navMenu_home").onclick = function () {
+            location.href = "/";
+        };
+        document.getElementById("navMenu_About").onclick = function () {
+            location.href = "/about";
+        };
+        document.getElementById("navMenu_Pages").onclick = function () {
+            location.href = "/pages";
+        };
+        document.getElementById("navMenu_Login").onclick = function () {
+            location.href = "/login";
+        };
+        document.getElementById("navMenu_Signup").onclick = function () {
+            location.href = "/signup";
+        };
+        document.getElementById("navMenu_Wikimusic").onclick = function () {
+            location.href = "/wikimusic";
+        };
+    })
+
+
+
+</script>
+{% endblock javascript %}
+
+
+
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+
+
+{% block content %}
+<div>
+
+    <div id="intro">
+        <h1>Welcome to our Wiki!</h1>
+    </div>
+
+</div>
+
+{% block css %}
+<style rel="stylesheet" type="text/css">
+    #intro {
+        text-align: center;
+        background-color: rgb(153, 153, 231);
+        display: flex;
+        flex-direction: column;
+        border-radius: 2rem;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.35);
+        width: 30rem;
+        margin: 4rem auto;
+    }
+</style>
+{% endblock css %}
+
+{% endblock content %}

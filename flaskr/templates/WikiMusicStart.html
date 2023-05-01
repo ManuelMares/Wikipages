@@ -1,0 +1,46 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+    <style>
+        .submitionButton:hover{
+            background-color: #37b442 !important;
+        }
+        .submitionButton:active{
+            background-color: rgb(101, 221, 111) !important;
+        }
+    </style>
+    <div>
+            
+        <form id="formSubmition" method="post" action="#" style="background-color: rgb(175 175 241); padding: 2rem 10rem; margin-bottom: 2rem;">
+            <h1 style="display: flex; align-items: center; justify-content:center; width:100%; color:white">
+                (Re)search for a song!
+            </h1>
+            <div style="height: auto;width: 100%;display: flex;flex-direction: column; margin-bottom: 1rem; ">
+                <P style="margin: 0;border: 0;padding: 0;font-weight: 1000;font-size: 1.3rem; color:azure">
+                    Artist:
+                </P>
+                <input value="beatles" id="artist" type="text" name="artist" style="border: none;background-color: white;margin: 0;padding: 0;height: 2rem;border-radius: 0.5rem;width: 100%;font-weight: 500;padding-left: 1rem;">
+            </div>
+            <div style="height: auto;width: 100%;display: flex;flex-direction: column; margin-bottom: 1rem;">
+                <P style="margin: 0;border: 0;padding: 0;font-weight: 1000;font-size: 1.3rem; color:azure">
+                    Song name:
+                </P>
+                <input value ="submarine" id="songname" type="text" name="songname" style="border: none;background-color: white;margin: 0;padding: 0;height: 2rem;border-radius: 0.5rem;width: 100%;font-weight: 500;padding-left: 1rem;">
+              
+                <p><input id="submitionButton"  class="submitionButton" type="submit" value="search!" style="    margin-top: 1rem;
+                    border: none;
+                    color: #fff;
+                    font-weight: 800;
+                    font-size: 1.2em;
+                    background-color: #4CAF50;
+                    width: 100%;
+                    height: 3rem;
+                    border-radius: 0.5rem;"/></p>
+            
+            </div>
+            
+            
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .body {
+            border: 0;
+            padding: 0;
+            margin: 0;
+            height: auto;
+            font-family: 'Trebuchet MS';
+            background-color: #ededed;
+        }
+
+        .navContainer {
+            display: flex;
+            flex-direction: column;
+
+            width: 100%;
+            height: 3rem;
+
+            border: 0;
+            padding: 0;
+            margin: 0;
+
+            background-color: rgb(122, 122, 215);
+        }
+
+        .navMenu {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+
+            width: 100%;
+            height: 100%;
+            border: 0;
+            padding: 0;
+            margin: 0;
+
+            list-style-type: none;
+        }
+
+        .navMenu_button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.5rem;
+            height: 100%;
+            width: 100%;
+        }
+
+        .navMenu_button:hover {
+            background-color: rgb(157, 157, 229);
+        }
+
+        .navMenu_button:action {
+            background-color: rgb(187, 187, 230);
+        }
+
+        .navMenu_text {
+            align-items: center;
+            text-align: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+    </style>
+    <!-- TODO(Checkpoint Requirement 3): Change the title and content of your wiki.-->
+    <title>New wiki page</title>
+</head>
+
+
+<body class="body">
+    {% if loggedIn %}
+    {% include 'navMenu_logged.html' %}
+    {% else %}
+    {% include 'navMenu_notLogged.html' %}
+    {% endif %}
+
+    {% block content %}{% endblock content %}
+</body>
+
+</html>

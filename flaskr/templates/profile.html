@@ -1,0 +1,142 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+    <style>
+        #profile-card {
+            display: flex;
+            flex-direction: column;
+            border-radius: 2rem;
+            width: 85%;
+            margin: 4rem auto;
+            height: auto;
+        }
+
+        #main-info {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(145, 145, 212);
+            padding: 2rem;
+            border-radius: 2rem 2rem;
+        }
+
+        #profile-pic{
+            display: inline-block;
+            text-align: center;
+            margin: auto;
+        }    
+
+        #profile-pic img{
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 360px;
+            height: 360px;
+            object-fit: cover;
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 50%;      
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.35);
+        }
+
+        #profile-bio{
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+        }       
+
+        #bio{
+            width: 75%;
+            height: 100px;
+            resize: none;    
+            background-color: rgb(176, 176, 231);                   
+        }       
+
+        .submit{
+            border-radius: 2rem; 
+        }
+
+        .pfp-upload{
+            writing-mode: horizontal-tb;
+            padding-left: 0;
+            padding-right: 0;
+            width: 350px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.35);
+            background-color: rgb(176, 176, 231); 
+            border-radius: 2rem;
+        }
+
+        .pfp-upload input{
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .sub-info{
+                display: flex;
+                height: auto;
+                min-height: 5rem;
+                width: 100%;
+                background: #9191d4;
+                border-radius: 20px;
+                margin: 30px 0;
+        }  
+
+        .recently-viewed h2{
+            margin-left: 20px;            
+        }
+    </style>
+
+    <body>
+        
+        <div id="profile-card">
+            <div id="main-info">
+                <div id="profile-pic">
+                    <div>
+                        {% if profile_pic %}
+                            <img src="{{profile_pic}}" alt="Your Profile Picture">
+                        {% else %}
+                            <p>You do not have a profile picture</p>
+                        {% endif %}
+                    </div>
+                    <div class="pfp-upload">
+                        <form method="POST" action="" enctype="multipart/form-data">
+                            <input id="pfp" type="file" name="pfpUpload">
+                            <input class="submit" type="submit" value="Confirm">
+                        </form>
+                    </div>
+                </div>
+                <div id="profile-bio">
+                    {% if profile_bio %}
+                    <div class="bio-upload">
+                        <form method="POST">
+                            <p><textarea id="bio" name="bioUpload" maxlength="768" placeholder="Click here to type in your bio">{{profile_bio}}</textarea></p>
+                            <p><input class="submit" type="submit" value="Confirm bio"></p>
+                        </form>
+                    </div>
+                    {% else %}
+                    <div class="bio-upload">
+                        <form method="POST">
+                            <p><textarea id="bio" name="bioUpload" maxlength="768" placeholder="Click here to type in your bio"></textarea></p>
+                            <p><input class="submit" type="submit" value="Submit"></p>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="sub-info">
+                <div class="recently-viewed">
+                    <h2>Recently Viewed Pages</h2>
+                    <ul>
+                        {% for page in recent %}
+                            <li>
+                                <p>{{page}}</p>                                
+                            </li>
+                        {% endfor %} 
+                    </ul>
+                        
+                </div>                
+            </div>
+        </div>
+
+    </body>
+{% endblock content %}
